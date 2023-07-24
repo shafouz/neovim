@@ -45,7 +45,7 @@ describe('startup', function()
     local screen
     screen = Screen.new(60, 3)
     screen:attach()
-    command("terminal " .. nvim_prog .. " -u NONE --server $NVIM --remote-ui")
+    command('terminal ' .. nvim_prog .. ' -u NONE --server $NVIM --remote-ui')
     screen:expect([[
       ^Nvim child UI cannot attach to the UI of its parent ($NVIM) |
                                                                   |
