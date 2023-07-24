@@ -41,17 +41,16 @@ describe('startup', function()
   end)
 
   it('prevents infinite loop', function()
-    clear()
+    clear({ "-u", "NONE" })
     local screen
-    screen = Screen.new(60, 2)
+    screen = Screen.new(60, 3)
     screen:attach()
-    funcs.termopen({ nvim_prog })
-    feed("i")
+    command("terminal " .. nvim_prog .. " -u NONE --server $NVIM --remote-ui")
     screen:expect([[
-      [No Name]                                 0,0-1          All|
-      -- TERMINAL --                                              |
+      ^Nvim child UI cannot attach to the UI of its parent ($NVIM) |
+                                                                  |
+                                                                  |
     ]])
-    screen:snapshot_util()
   end)
 
   it('--startuptime', function()
