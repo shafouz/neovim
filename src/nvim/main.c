@@ -922,7 +922,7 @@ static void remote_request(mparm_T *params, int remote_args, char *server_addr, 
       os_errmsg("\n");
       os_exit(1);
     } else if (strequal(server_addr, os_getenv("NVIM"))) {
-      os_errmsg("<ERROR>, maybe you meant --remote instead of --remote-ui.");
+      os_errmsg("Nvim child UI cannot attach to the UI of its parent ($NVIM)");
       os_errmsg("\n");
       os_exit(1);
     }
