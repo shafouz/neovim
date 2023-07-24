@@ -40,6 +40,20 @@ describe('startup', function()
     ok(string.find(alter_slashes(meths.get_option_value('runtimepath', {})), funcs.stdpath('config'), 1, true) == nil)
   end)
 
+  it('prevents infinite loop', function()
+    clear()
+    local screen
+    screen = Screen.new(60, 2)
+    screen:attach()
+    funcs.termopen({ nvim_prog })
+    feed("i")
+    screen:expect([[
+      [No Name]                                 0,0-1          All|
+      -- TERMINAL --                                              |
+    ]])
+    screen:snapshot_util()
+  end)
+
   it('--startuptime', function()
     local testfile = 'Xtest_startuptime'
     finally(function()
