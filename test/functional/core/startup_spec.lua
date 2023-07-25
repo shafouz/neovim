@@ -41,7 +41,7 @@ describe('startup', function()
   end)
 
   it('prevents infinite loop', function()
-    clear({ '-u', 'NONE' })
+    clear()
     local screen
     screen = Screen.new(60, 3)
     screen:attach()
