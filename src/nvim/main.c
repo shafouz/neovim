@@ -922,7 +922,8 @@ static void remote_request(mparm_T *params, int remote_args, char *server_addr, 
       os_errmsg("\n");
       os_exit(1);
     } else if (strequal(server_addr, os_getenv("NVIM"))) {
-      os_errmsg("Cannot attach UI of :terminal child to its parent. (Unset $NVIM to skip this check)");
+      os_errmsg("Cannot attach :terminal child to its parent. ");
+      os_errmsg("Unset $NVIM to skip this check");
       os_errmsg("\n");
       os_exit(1);
     }
