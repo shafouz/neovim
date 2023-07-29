@@ -43,13 +43,13 @@ describe('startup', function()
   it('prevents infinite loop', function()
     clear()
     local screen
-    screen = Screen.new(84, 3)
+    screen = Screen.new(76, 3)
     screen:attach()
     funcs.termopen({ nvim_prog, '-u', 'NONE', '--server', eval('v:servername'), '--remote-ui' })
     screen:expect([[
-      ^Cannot attach UI of :terminal child to its parent. (Unset $NVIM to skip this check) |
-                                                                                          |
-                                                                                          |
+^Cannot attach :terminal child to its parent. Unset $NVIM to skip this check |
+                                                                            |
+                                                                            |
     ]])
   end)
 
